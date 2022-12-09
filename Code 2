@@ -1,0 +1,12 @@
+receive() external payable {
+        emit Received(msg.sender, msg.value);
+    }
+
+    modifier restricted() {
+        require(msg.sender == manager, "manager allowed only");
+        _;
+    }
+
+    constructor() public {
+        manager = msg.sender;
+    }
